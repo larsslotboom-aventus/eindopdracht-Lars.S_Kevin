@@ -1,4 +1,4 @@
-mport tkinter as tk
+import tkinter as tk
 
 def calculate():
     length = float(length_entry.get())

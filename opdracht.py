@@ -1,15 +1,15 @@
 import tkinter as tk
 import os
 
-current_file_path = os.path.realpath(__file__)
-os.chdir(os.path.dirname(current_file_path))
+newdir = __file__.replace('\\' + os.path.basename(__file__), '')
+os.chdir(newdir)
 
 
 root = tk.Tk()
 root.title("main menu")
 
 def open_window(winID):
-    open("\logica\btw.py").read()
+    open("logica\btw.py").read()
 
 label = tk.Label(root, text="main menu", font=('arial',20))
 button1 = tk.Button(root, text="BTW Berekening", width=18, command=open_window(0))
