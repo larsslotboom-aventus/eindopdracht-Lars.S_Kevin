@@ -10,6 +10,40 @@ os.chdir(newdir)
 root = tk.Tk()
 root.title("main menu")
 
+def open_window_btw():
+    def calculate():
+        tarief = int(tarief_entry.get()) / 100
+        prijs = float(prijs_entry.get())
+        btwbedrag = tarief * prijs
+        eindprijs = prijs + btwbedrag
+        btwbedrag_label.config(text="btw bedrag: {:.2f}".format(btwbedrag))
+        eindprijs_label.config(text="eind prijs: {:.2f}".format(eindprijs))
+
+    btw = tk.Toplevel(root)
+    btw.title("BTW berekenen")
+
+    tarief_label = tk.Label(btw, text="tarief in percentage:")
+    tarief_label.grid(row=0, column=0, padx=5, pady=5)
+
+    tarief_entry = tk.Entry(btw)
+    tarief_entry.grid(row=0, column=1, padx=5, pady=5)
+
+    prijs_label = tk.Label(btw, text="prijs:")
+    prijs_label.grid(row=1, column=0, padx=5, pady=5)
+
+    prijs_entry = tk.Entry(btw)
+    prijs_entry.grid(row=1, column=1, padx=5, pady=5)
+
+    calculate_button = tk.Button(btw, text="Bereken", command=calculate)
+    calculate_button.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
+
+    btwbedrag_label = tk.Label(btw, text="btw bedrag: ")
+    btwbedrag_label.grid(row=3, column=0, padx=5, pady=5)
+
+    eindprijs_label = tk.Label(btw, text="eind prijs: ")
+    eindprijs_label.grid(row=4, column=0, padx=5, pady=5)
+
+
 def open_window_vierkant():
     def calculate():
         length = float(length_entry.get())
@@ -55,16 +89,16 @@ def open_window_cirkel():
     cirkel.title("Bereken omtrek en oppervlakte van een cirkel")
 
     label = tk.Label(cirkel, text="Voer de diameter in:")
-    label.pack()
+    label.grid(row=0, column=0, padx=5, pady=5)
 
     entry = tk.Entry(cirkel)
-    entry.pack()
+    entry.grid(row=0, column=1, padx=5, pady=5)
 
     button = tk.Button(cirkel, text="Bereken", command=calculate)
-    button.pack()
+    button.grid(columnspan=2, padx=5, pady=5)
 
-    result_label = tk.Label(cirkel, text="")
-    result_label.pack()
+    result_label = tk.Label(cirkel, text="Omtrek:\nOppervlakte:")
+    result_label.grid(columnspan=2, padx=5, pady=5)
 
 def open_window_tijdberekening():
     def calculate():
@@ -96,7 +130,7 @@ def open_window_tijdberekening():
 
 
 label = tk.Label(root, text="main menu", font=('arial',20))
-button1 = tk.Button(root, text="BTW Berekening", width=18)
+button1 = tk.Button(root, text="BTW Berekening", width=18, command=open_window_btw)
 button2 = tk.Button(root, text="Tijdberekening", width=18, command=open_window_tijdberekening)
 button3 = tk.Button(root, text="Vierkant Berekeningen", width=18, command=open_window_vierkant)
 button4 = tk.Button(root, text="circel Berekeningen", width=18, command=open_window_cirkel)
