@@ -6,11 +6,13 @@ import os
 newdir = __file__.replace('\\' + os.path.basename(__file__), '')
 os.chdir(newdir)
 
-
+#Dit geeft de main menu weer
 root = tk.Tk()
 root.title("main menu")
 
+#Dit opent de window van de BTW berekening
 def open_window_btw():
+    #Dit berekent de BTW
     def calculate():
         tarief = int(tarief_entry.get()) / 100
         prijs = float(prijs_entry.get())
@@ -43,8 +45,9 @@ def open_window_btw():
     eindprijs_label = tk.Label(btw, text="eind prijs: ")
     eindprijs_label.grid(row=4, column=0, padx=5, pady=5)
 
-
+#Dit opent de window om de oppervlakte van een vierkant te berekenen
 def open_window_vierkant():
+    #Dit berekent de oppervlakte van de vierkant en geeft het terug
     def calculate():
         length = float(length_entry.get())
         width = float(width_entry.get())
@@ -77,8 +80,9 @@ def open_window_vierkant():
     area_label = tk.Label(vierkant, text="Oppervlakte: ")
     area_label.grid(row=4, column=0, padx=5, pady=5)
     
-
+#Dit opent de window om de omtrek en de oppervlakte van een cirkel te berekenen
 def open_window_cirkel():
+    #Dit berekent de omtrek en de oppervlakte van de cirkel en geeft het terug
     def calculate():
         diameter = float(entry.get())
         circumference = pi * diameter
@@ -100,7 +104,9 @@ def open_window_cirkel():
     result_label = tk.Label(cirkel, text="Omtrek:\nOppervlakte:")
     result_label.grid(columnspan=2, padx=5, pady=5)
 
+ #Dit opent de window om de reistijden te berekenen
 def open_window_tijdberekening():
+    #Dit berekent de reistijd en geeft het terug
     def calculate():
         distance = float(distance_entry.get())
         speed = float(speed_entry.get())
